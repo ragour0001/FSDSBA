@@ -1,0 +1,61 @@
+.example-card{
+    display: flex;
+    flex-direction: column;
+    height: 72vh;
+    width: 25vw;
+    margin: 1em;
+    text-align: center;
+    box-shadow: 3px 3px 25px black;
+    background-color: #424242;
+    margin-top: 10vh;
+}
+
+.header{
+    font-family: 'Josefin Sans', sans-serif;
+    margin: auto;
+    color: #fff;
+}
+
+.mat-card-title {
+    font-size: 1em;
+    margin-bottom: 1.2vh;
+}
+
+.mat-card-subtitle{
+    color: #fff;
+    font-size: 0.8em;
+    margin: auto;
+}
+
+.image{
+    height: 40vh;
+    width: 20vw;
+    margin: auto;
+}
+
+.content{
+    font-family: 'Josefin Sans', sans-serif;
+    margin: auto;
+    color: #fff;
+}
+
+.count {
+    font-family: 'Josefin Sans', sans-serif;
+    margin-left: 1vw;
+    font-size: 1.2em;
+    color: #fff;
+}
+
+.mat-fab.mat-accent,.mat-flat-button.mat-accent,.mat-mini-fab.mat-accent,.mat-raised-button.mat-accent{
+    background-color: #9c1148;
+    margin-left: 10px;
+} 
+
+
+.mat-icons{
+    color: #fff;
+}
+
+.material-icons{
+    color: #fff;
+}

@@ -1,0 +1,7 @@
+<div class="container">
+  <app-card *ngFor = 'let article of articles'
+  [article] = 'article'
+  [favouriteData] = 'favouriteData'
+  [recommendedData] = 'recommendedData'
+  ></app-card>
+</div>

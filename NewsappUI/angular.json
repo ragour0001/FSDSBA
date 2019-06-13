@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Newsapp": {
+    "NewsappUI": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Newsapp",
+            "outputPath": "dist/NewsappUI",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -25,7 +25,8 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "es5BrowserSupport": true
           },
           "configurations": {
             "production": {
@@ -57,18 +58,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Newsapp:build"
+            "browserTarget": "NewsappUI:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Newsapp:build:production"
+              "browserTarget": "NewsappUI:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Newsapp:build"
+            "browserTarget": "NewsappUI:build"
           }
         },
         "test": {
@@ -102,7 +103,7 @@
         }
       }
     },
-    "Newsapp-e2e": {
+    "NewsappUI-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -111,11 +112,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Newsapp:serve"
+            "devServerTarget": "NewsappUI:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Newsapp:serve:production"
+              "devServerTarget": "NewsappUI:serve:production"
             }
           }
         },
@@ -131,5 +132,5 @@
       }
     }
   },
-  "defaultProject": "Newsapp"
+  "defaultProject": "NewsappUI"
 }

@@ -1,0 +1,91 @@
+<mat-card class="example-card">
+  <mat-card-header class="header">
+    <mat-card-title>{{article.title}}</mat-card-title>
+    <mat-card-subtitle>{{article.source.name}}</mat-card-subtitle>
+  </mat-card-header>
+
+  <img 
+    mat-card-image 
+    class="image" 
+    [src]='article.urlToImage' 
+    alt="Photo of a Shiba Inu"
+  />
+  
+  <mat-card-content class="content">
+    <p>
+      {{article.description}}
+    </p>
+  </mat-card-content>
+
+  <mat-card-actions class="button">
+
+    <button 
+      class="addbutton" 
+      *ngIf="!favouriteData && !recommendedData"
+      (click)="addButtonClick(article)"
+      matTooltip="Add to FavouriteList"
+      mat-mini-fab
+    >
+      <mat-icon aria-label="Example icon-button with a heart icon">
+        favorite
+      </mat-icon>
+    </button>
+
+    <button   
+      class="deletebutton" 
+      *ngIf="favouriteData"
+      (click)="deleteButtonClick(article)"
+      matTooltip="Delete from FavouriteList"
+      mat-mini-fab
+    >
+      <i class="material-icons">
+        delete
+      </i>
+    </button>
+
+    <button 
+    mat-mini-fab 
+    class="mat-fab" 
+    *ngIf="!recommendedData"
+    (click)="readNews()"
+    matTooltip="Read News">
+      <mat-icon>
+        <!-- <a [href]="article.url"> -->
+          <i class="material-icons">view_headline</i>
+        <!-- </a> -->
+      </mat-icon> 
+    </button>
+
+    <button 
+      class="updatebutton"
+      *ngIf="favouriteData"
+      (click)="addComments()"
+      matTooltip="Update comments"
+      mat-mini-fab
+      >
+      <i class="material-icons">create
+      </i>    
+    </button>
+
+    <button 
+    class="likebutton" 
+    *ngIf="recommendedData"
+    matTooltip="This is added in Favourite Article"
+    mat-mini-fab
+  >
+  <i class="material-icons">
+    thumb_up
+    </i>
+    <!-- <mat-icon aria-label="Example icon-button with a heart icon">
+      favorite
+    </mat-icon> -->
+    
+  </button>
+  <i class="count" *ngIf="recommendedData">{{article.count}}</i>
+  <!-- <p>
+   Count : {{article.count}}
+  </p>
+   -->
+    
+  </mat-card-actions>
+  </mat-card>

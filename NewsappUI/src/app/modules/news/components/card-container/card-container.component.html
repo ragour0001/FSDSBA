@@ -1,0 +1,18 @@
+<!-- <div *ngFor ='let article of articles'>
+  {{article.source.name}}||{{article.title}}
+  <img [src]='article.urlToImage'>
+</div> -->
+
+<mat-form-field class="field" appearance="outline">
+  <mat-label class="label">Search Article</mat-label>
+  <input (keyup)="onKey($event)" matInput class="input">
+  <mat-icon matSuffix><i class="material-icons">search</i>
+  </mat-icon>
+</mat-form-field>
+
+<div class="container">
+<app-card 
+  *ngFor ='let article of articles'
+  [article] =article (addToFavouriteList) =addToFavouriteList($event)>
+</app-card>
+</div>  

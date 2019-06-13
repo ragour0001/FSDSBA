@@ -1,36 +1,87 @@
-# NewsApp - A Case Study
 
-## Problem Statement
+# NOTE : In my git labs mysql server start automatically. My humble request to user first stop the mysql server then do docker-compose up
 
-Build a system to search for news article, open the article, add article to favourite list and recommend most liked/favourite articles to user.
 
-## Requirements
+# NewsApp - 
 
-### The application needs to fetch news article from the following API.
-https://newsapi.org/
+![NewsApp Logo] (./NewsappUI/src/assets/image/newsApp.jpeg)
 
-Example API:
-https://newsapi.org/v2/everything?q=bitcoin&from=2019-01-06&sortBy=publishedAt&apiKey=b170738ea8d145159da715566679a48fea
 
-### A frontend where the user can register/login to the application, search for article, open interested article, add article to favourite list and view recommended articles.
-### User can add an article to favourite list and should be able to view the favourite list.
-### A recommendation service should be able to store all the unique favourite articles from all the users and maintain counter for number of users added a particular article into favourite list. 
-### An option to view recommended articles should be available on frontend. 
 
-## Microservices/Modules
 
-- UserService - should be able to manage user accounts.
-- UI (User interface) -  should be able to
-    1. Search for a news article
-    2. View or open an article 
-    3. Add an article into favourite list
-    4. View favourite articles
-    5. View recommended articles
-    5. UI should be responsive which can run smoothly on various devices 
-- FavouriteService - should be able to store all the favourite articles for a user
-- ArticleRecommendationService - should be able to store all the unique favourite         articles from all the users and maintain counter for number of users added a            particular article into favourite list.
+## About the News App
 
-## Tech Stack
+In this app user can search news article,  open the article, add article to favourite list and recommend most liked/favourite articles to user and user can update the comments about the articles.
+
+
+## Features of the NewsApp
+
+- A frontend where the user can register/login to the application, after register/login user will get the artiles from third api, search for article, open interested article, add article to favourite list and view recommended articles.
+
+- User can add an article to favourite list and able to view the favourite list and recommendation list.
+
+- A recommendation service will store all the unique favourite articles from all the users and maintain counter for number of users added a particular article into favourite list. 
+
+
+
+## Services and modules in the NewsApp
+
+- NewsappUI : This is frontend where the user can register/login to the application, search for article, open interested article, add article to favourite list and view 					recommended articles.
+				1. Search for a news article
+				2. View or open an article 
+				3. Add an article into favourite list
+				4. View favourite articles
+				5. View recommended articles
+				5. UI is responsive which can run smoothly on various devices 
+
+- userservice : This service will be manage user accounts.
+				1. Created a server in Spring Boot to facilitate user registration and login using JWT    token and MySQL
+				2.  swagger documentation (http://localhost:8071/swagger-ui.html)
+				3. It will use port 8071
+
+
+- favouriteservice : This service will be store all the favourite articles for a user
+					1. Created a server in Spring Boot to facilitate CRUD operation over favourite articles   stored in MongoDB
+					2. swagger documentation (http://localhost:8072/swagger-ui.html)
+					3. It will produce the article for RabbitMQ
+					4. It will use port 8072
+
+
+- articleRecommendationService : This service will be store all the unique favourite articles from all the users and maintain counter for number of users added a 									 particular article into favourite list.
+						
+								1. Created a server in Spring Boot to facilitate CRUD operation over favourite articles   stored in MongoDB
+								2. swagger documentation (http://localhost:8072/swagger-ui.html)
+								3. It will consume the article for RabbitMQ and Store the recommendation list in MongoDB.
+								4. Maintains list of unique recommended articles based on what user added into favourite list and keep counter for number of users added a 									   particular article into favourite list
+								5. swagger documentation (http://localhost:8074/swagger-ui.html)
+								6. It will use port 8074
+
+
+
+- eurekaserverdemo : This service will be act as server where userservice, favouriteservice and articleRecommendationService will become clients. It will use port 9004
+
+
+- zuulservice : This service is an API gateway, which will serve UI and API Request. It will use port 8073
+
+
+
+## List of service and ports
+
+	- userservice : 8071
+
+	- favouriteservice : 8072
+
+	- articleRecommendationService : 8074
+
+	- eurekaserverdemo : 9004
+
+	- zuulservice : 8073
+	
+
+
+
+## Tech Stack used in the NewsApp
+
 - Spring Boot
 - MySQL, MongoDB
 - API Gateway
@@ -40,54 +91,36 @@ https://newsapi.org/v2/everything?q=bitcoin&from=2019-01-06&sortBy=publishedAt&a
 - CI (Gitlab Runner)
 - Docker, Docker Compose
 
-## Flow of Modules
 
-### Building frontend:
-- Building responsive views:
-    1. Register/Login
-    2. Search for an article
-    3. Article list - populating from external API
-    4. Build a view to show favourite articles
-    5. Build a view to show recommended articles
-- Using Services to populate these data in views
-- Stitching these views using Routes and Guards
-- Making the UI Responsive
-- E2E and unit tests
-- Writing CI configuration file
-- Dockerize the frontend
+##steps for installation and deployment of news app
 
-### Building the UserService
-- Creating a server in Spring Boot to facilitate user registration and login using JWT    token and MySQL
-- Writing swagger documentation
-- Unit Testing
-- Write CI Configuration
-- Dockerize the application
-- Write docker-compose file to build both frontend and backend application
+### NOTE : In my git labs mysql server start automatically. My humble request to user first stop the mysql server then proceed below steps
 
-### Create an API Gateway which can serve UI and API Request from same host
+	1. Open terminal where docker-compose.yml file located
+	
+	2. Location : Desktop/SBADev/ragour19-newsapp-java-boilerplate (Here you will find the docker-compose.yml file)
 
-### Building the Favourite Service
-- Building a server in Spring Boot to facilitate CRUD operation over favourite articles   stored in MongoDB
-- Writing Swagger Documentation
-- Build a Producer for RabbitMQ which
-  - i. Produces events like what user added to favourite list
-- Write Test Cases
-- Write CI Configuration
-- Dockerize the application
-- Update the docker-compose
+	3. Do docker-compose up
 
-### Building the Article Recommendation Service
-- Building a Consumer for RabbitMQ
-  - i. On a new event generated Update the recommendations in the system.  Store the         recommendation list in MongoDB.
-  - ii. Maintain list of unique recommended articles based on what user added into            favourite list and keep counter for number of users added a particular article        into favourite list
-- Build an API to get Recommendations
-- Writing Swagger Documentation
-- Write Test Cases
-- Write CI Configuration
-- Dockerize the application
-- Update the docker-compose
-- Update the API Gateway
+	4. In new tab of terminal you can check the status of all services: (docker ps -a)
 
-### Create Eureka server and make other services as client
+	5. User can check the client service status on eureka server (http://localhost:9004)
 
-### Demonstrate the entire application
+	6. User can check rabbitMQ server using (http://localhost:15672) username/password is guest/guest
+
+	7. open browser and type http://localhost:8080 (Here you can perform the actions) 
+
+	8. Once User Register, user need to wait till it consume by userservice and after consumig user can login to News App and perform the crus operation.
+
+
+## Author
+
+	Name: RAKESH GOUR
+
+	E-Mail: ragour19@in.ibm.com
+
+
+
+
+
+
