@@ -80,7 +80,7 @@ services:
       test: "exit 0"
 
   angular:
-    image: ragour0001/frontendimage:v3
+    image: ragour0001/frontendimage:v4
     network_mode: host
     container_name: angular-docker
     ports:

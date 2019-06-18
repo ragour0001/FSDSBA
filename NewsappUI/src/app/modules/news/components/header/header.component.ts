@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 //import { AuthenticationService } from 'src/app/modules/authentication/authentication.service';
 import { AuthenticationService } from '../../../authentication/authentication.service';
@@ -10,6 +10,10 @@ import { AuthenticationService } from '../../../authentication/authentication.se
 })
 export class HeaderComponent implements OnInit {
 
+  enableLogout: boolean = true;
+
+  // route = ['login' , 'register'];
+  
   constructor(
     private router: Router,
     private authService: AuthenticationService
@@ -19,6 +23,7 @@ export class HeaderComponent implements OnInit {
     this.authService.logout();
      console.log("logout called!!!");
      this.router.navigate(["/login"]); 
+     this.enableLogout = false;
   }
 
   ngOnInit() {

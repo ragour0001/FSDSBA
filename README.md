@@ -4,7 +4,7 @@
 
 # NewsApp - 
 
-![NewsApp Logo] (./NewsappUI/src/assets/image/newsApp.jpeg)
+![NewsApp Logo](./NewsappUI/src/assets/image/newsApp.jpeg)
 
 
 

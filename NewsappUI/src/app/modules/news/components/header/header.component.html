@@ -13,7 +13,7 @@
 
       <button class="mat-button-favouriteList" mat-button [routerLink]="['/FavouriteList']">Favourite</button>
       <button class="mat-button-recommendedList" mat-button [routerLink]="['/RecommendedList']">Recommended </button>
-      <button class="mat-button-logout" mat-button (click)="logout()">Logout</button>
-
+      <button class="mat-button-logout"  *ngIf="enableLogout" mat-button (click)="logout()">Logout</button>
+      <!-- <button class="mat-button-logout"  *ngIf="route.url != 'login' || route.url != 'register' && enableLogout" mat-button (click)="logout()">Logout</button> -->
   </mat-toolbar-row>
 </mat-toolbar>   

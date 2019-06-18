@@ -13,7 +13,7 @@ export const TOKEN_NAME = "jwt_token";
 export class LoginComponent implements OnInit {
 
   user: User;
-
+  
   constructor(
     private authService: AuthenticationService, 
     private snackbar: MatSnackBar,
