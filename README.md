@@ -1,10 +1,7 @@
 
-# NOTE : In my git labs mysql server start automatically. My humble request to user first stop the mysql server then do docker-compose up
-
-
 # NewsApp - 
 
-![NewsApp Logo](./NewsappUI/src/assets/image/newsApp.jpeg)
+![NewsApp Logo](/NewsappUI/src/assets/image/newsApp.jpeg)
 
 
 
@@ -110,7 +107,7 @@ In this app user can search news article,  open the article, add article to favo
 
 	7. open browser and type http://localhost:8080 (Here you can perform the actions) 
 
-	8. Once User Register, user need to wait till it consume by userservice and after consumig user can login to News App and perform the crus operation.
+	8. Once User Register, user need to wait till it consume by userservice and after consumig user can login to News App and perform the crud operation.
 
 
 ## Author

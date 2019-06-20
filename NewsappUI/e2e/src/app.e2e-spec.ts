@@ -16,7 +16,7 @@ describe('workspace-project App', () => {
   it('should be redirected to /login route', () => {
     browser.element(by.css('.register-button')).click();
     expect(browser.getCurrentUrl()).toContain('/register');
-    browser.driver.sleep(2000);
+    browser.driver.sleep(9000);
   });
 
   it('Should be able to register user', () => {
